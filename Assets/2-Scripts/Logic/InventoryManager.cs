@@ -1,9 +1,13 @@
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
+
+    public static event Action<List<InventoryItem>> OnInventoryChanged;
 
     public List<InventoryItem> _inventory = new List<InventoryItem>();
     public Dictionary<ItemDataSO, InventoryItem> _itemDictionary = new Dictionary<ItemDataSO, InventoryItem>();
@@ -29,6 +33,7 @@ public class InventoryManager : MonoBehaviour
         {
             _itemDictionary[item].AddToStack();
             Debug.Log($"Added {item.itemName} to inventory. Stack size: {_itemDictionary[item]._stackSize}");
+            OnInventoryChanged?.Invoke(_inventory);
         }
         else
         {
@@ -36,6 +41,7 @@ public class InventoryManager : MonoBehaviour
             _inventory.Add(newItem);
             _itemDictionary.Add(item, newItem);
             Debug.Log($"Did not find the item but added {item.itemName} to inventory. Stack size: {newItem._stackSize}");
+            OnInventoryChanged?.Invoke(_inventory);
         }
     }
 
@@ -52,6 +58,7 @@ public class InventoryManager : MonoBehaviour
                 _itemDictionary.Remove(item);
                 Debug.Log($"{item.itemName} stack is empty and removed from inventory.");
             }
+            OnInventoryChanged?.Invoke(_inventory);
         }
         else
         {

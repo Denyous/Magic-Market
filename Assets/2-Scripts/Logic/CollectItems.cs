@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class CollectItems : MonoBehaviour
 {
-    public delegate void OnItemCollected(ItemDataSO itemData);
-    public static event OnItemCollected onItemCollected;
+    public static event Action<ItemDataSO> onItemCollected;
     
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,7 +16,7 @@ public class CollectItems : MonoBehaviour
             
             if (onItemCollected != null)
             {
-                onItemCollected.Invoke(collision.gameObject.GetComponent<Item>()._itemData);
+                onItemCollected.Invoke();
             }
         }
     }
