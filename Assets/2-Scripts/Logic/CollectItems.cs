@@ -4,8 +4,6 @@ using UnityEngine;
 public class CollectItems : MonoBehaviour
 {
     public static event Action<ItemDataSO> onItemCollected;
-    
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Item"))
@@ -16,7 +14,7 @@ public class CollectItems : MonoBehaviour
             
             if (onItemCollected != null)
             {
-                onItemCollected.Invoke();
+                onItemCollected.Invoke(collision.gameObject.GetComponent<Item>()._itemData);
             }
         }
     }
