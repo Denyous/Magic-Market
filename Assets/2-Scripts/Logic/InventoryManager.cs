@@ -24,6 +24,7 @@ public class InventoryManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
         }
     }
 
@@ -32,7 +33,7 @@ public class InventoryManager : MonoBehaviour
         if (_itemDictionary.ContainsKey(item))
         {
             _itemDictionary[item].AddToStack();
-            Debug.Log($"Added {item.itemName} to inventory. Stack size: {_itemDictionary[item]._stackSize}");
+            Debug.Log($"Added {item.ItemName} to inventory. Stack size: {_itemDictionary[item]._stackSize}");
             OnInventoryChanged?.Invoke(_inventory);
         }
         else
@@ -40,7 +41,7 @@ public class InventoryManager : MonoBehaviour
             InventoryItem newItem = new InventoryItem(item);
             _inventory.Add(newItem);
             _itemDictionary.Add(item, newItem);
-            Debug.Log($"Did not find the item but added {item.itemName} to inventory. Stack size: {newItem._stackSize}");
+            Debug.Log($"Did not find the item but added {item.ItemName} to inventory. Stack size: {newItem._stackSize}");
             OnInventoryChanged?.Invoke(_inventory);
         }
     }
@@ -51,18 +52,18 @@ public class InventoryManager : MonoBehaviour
         {
             InventoryItem inventoryItem = _itemDictionary[item];
             inventoryItem.RemoveFromStack();
-            Debug.Log($"Removed {item.itemName} from inventory. Stack size: {inventoryItem._stackSize}");
+            Debug.Log($"Removed {item.ItemName} from inventory. Stack size: {inventoryItem._stackSize}");
             if (inventoryItem._stackSize <= 0)
             {
                 _inventory.Remove(inventoryItem);
                 _itemDictionary.Remove(item);
-                Debug.Log($"{item.itemName} stack is empty and removed from inventory.");
+                Debug.Log($"{item.ItemName} stack is empty and removed from inventory.");
             }
             OnInventoryChanged?.Invoke(_inventory);
         }
         else
         {
-            Debug.LogWarning($"Attempted to remove {item.itemName} but it was not found in inventory.");
+            Debug.LogWarning($"Attempted to remove {item.ItemName} but it was not found in inventory.");
         }
     }
 

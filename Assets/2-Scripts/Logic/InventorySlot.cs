@@ -21,8 +21,8 @@ public class InventorySlot : MonoBehaviour
         _stackSize.enabled = true;
         _itemIcon.enabled = true;
 
-        _itemIcon.sprite = item._itemData.itemIcon;
-        _itemLabel.text = item._itemData.itemName;
+        _itemIcon.sprite = item._itemData.Icon;
+        _itemLabel.text = item._itemData.ItemName;
         _stackSize.text = item._stackSize.ToString();
     }
 

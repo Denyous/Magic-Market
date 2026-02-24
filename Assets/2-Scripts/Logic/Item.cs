@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
     public void InitializeItem(ItemDataSO itemData)
     {
         _itemData = itemData;
-        gameObject.GetComponent<SpriteRenderer>().sprite = _itemData.itemIcon;
+        gameObject.GetComponent<SpriteRenderer>().sprite = _itemData.Icon;
     }
 
 
