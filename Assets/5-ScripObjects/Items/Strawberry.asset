@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Strawberry
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableSO
   itemId: 0
-  itemName: 
+  itemName: Strawberry
   description: 
-  icon: {fileID: 0}
-  itemType: 0
+  icon: {fileID: 2301922973543145194, guid: f55f9c79ad0b58a43b0ae383c6490fec, type: 3}
+  itemType: 1
   stackable: 0
   maxStack: 1
   energyRestoreAmount: 20

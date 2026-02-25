@@ -14,7 +14,7 @@ public class CollectItems : MonoBehaviour
             
             if (onItemCollected != null)
             {
-                onItemCollected.Invoke(collision.gameObject.GetComponent<Item>()._itemData);
+                onItemCollected.Invoke(collision.gameObject.GetComponent<WorldItem>().ItemData);
             }
         }
     }
