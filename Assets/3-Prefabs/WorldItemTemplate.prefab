@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 932566598164689283}
   - component: {fileID: 1976988887505567357}
   m_Layer: 0
-  m_Name: ItemTemplate
+  m_Name: WorldItemTemplate
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
