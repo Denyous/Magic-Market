@@ -32,6 +32,10 @@ public abstract class ItemDataSO : ScriptableObject
     [Tooltip("Maksimum stack sayısı")]
     private int maxStack = 1;
 
+    [SerializeField]
+    [Tooltip("Satış değeri (ileride ekonomi sistemi için)")]
+    private int sellValue = 10;
+
     /// <summary>
     /// İnspektorda ID validation için callback.
     /// </summary>
@@ -52,7 +56,10 @@ public abstract class ItemDataSO : ScriptableObject
     public bool Stackable => stackable;
     public int MaxStack => maxStack;
 
+    public int SellValue => sellValue;
+
     #endregion
+
 
     public virtual bool Validate()
     {

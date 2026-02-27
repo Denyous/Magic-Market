@@ -15,16 +15,5 @@ public class ResourceSO : ItemDataSO
 
     public int SellValue => sellValue;
 
-    public override bool Validate()
-    {
-        if (!base.Validate()) return false;
-
-        if (sellValue < 0)
-        {
-            Debug.LogError($"[ResourceItemSO] {name}: SellValue negatif olamaz!", this);
-            return false;
-        }
-
-        return true;
-    }
+    
 }

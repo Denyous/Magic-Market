@@ -268,6 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7030800932246955647}
   - component: {fileID: 7575609192028374271}
+  - component: {fileID: -5579198953811261837}
   - component: {fileID: 3605135007525070928}
   m_Layer: 5
   m_Name: ShopItemUI
@@ -307,6 +308,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2326000684841294039}
   m_CullTransparentMesh: 1
+--- !u!114 &-5579198953811261837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326000684841294039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6068e70935d7304784c0c4e73fcc5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemUI
+  iconImage: {fileID: 9181952959447539624}
+  itemNameText: {fileID: 8465327258721017460}
+  priceText: {fileID: 1651578773905806971}
+  buyButton: {fileID: 7472840257322339310}
 --- !u!114 &3605135007525070928
 MonoBehaviour:
   m_ObjectHideFlags: 0
