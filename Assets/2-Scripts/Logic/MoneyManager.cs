@@ -49,10 +49,4 @@ public class MoneyManager : MonoBehaviour
     {
         _moneyText.text = $"Coin: {Money}";
     }
-
-    public float GetMoney()
-    {
-        return Money;
-    }
-
 }

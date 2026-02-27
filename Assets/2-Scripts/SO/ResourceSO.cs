@@ -9,7 +9,11 @@
 public class ResourceSO : ItemDataSO
 {
     
-  
-    
+    [SerializeField]
+    [Tooltip("Satış değeri (ileride ekonomi sistemi için)")]
+    private int sellValue = 10;
+
+    public int SellValue => sellValue;
+
     
 }
