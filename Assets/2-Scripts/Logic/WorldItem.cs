@@ -13,7 +13,7 @@ public class WorldItem : MonoBehaviour
     private int stackCount = 1;
 
     private SpriteRenderer spriteRenderer;
-    private bool isInitialized = false;
+   
 
     #region Properties
 

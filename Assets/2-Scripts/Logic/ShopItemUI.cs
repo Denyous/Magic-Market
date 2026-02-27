@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,8 @@ public class ShopItemUI : MonoBehaviour
 
     [Header("Item Data")]
     private ItemDataSO itemData;
+
+    public static event Action OnItemPurchased;
     public void Setup(ItemDataSO data)
     {
         if (data == null)
@@ -21,7 +24,6 @@ public class ShopItemUI : MonoBehaviour
         }
 
         itemData = data;
-
         // UI elementlerini doldur
         UpdateUI();
 
@@ -72,13 +74,15 @@ public class ShopItemUI : MonoBehaviour
 
     void Buy()
     {
-        MoneyManager playerMoney = MoneyManager.Instance;
+        
 
-        if (playerMoney.Money >= itemData.SellValue)
+        if (MoneyManager.Instance.CanAfford(itemData.SellValue))
         {
             Debug.Log("Ürünü başarıyla satın aldın");
-            playerMoney.RemoveCoin(itemData.SellValue);
+            MoneyManager.Instance.RemoveCoin(itemData.SellValue);
             InventoryManager.Instance.AddItem(itemData);
+            OnItemPurchased?.Invoke();
+
         }
         else
         {

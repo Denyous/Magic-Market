@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ShopUI : MonoBehaviour
 {
     [Header("Variebles")]
-    
+
     [SerializeField] private List<ItemDataSO> items = new List<ItemDataSO>();
     [SerializeField] private ShopItemUI shopItemPrefab;
     [SerializeField] private Transform contentParent;
@@ -13,6 +14,7 @@ public class ShopUI : MonoBehaviour
     void Start()
     {
         InitializeShop();
+
     }
 
 
@@ -36,6 +38,7 @@ public class ShopUI : MonoBehaviour
             Debug.LogWarning("[ShopUI] Market'te item yok!");
             return;
         }
+
 
         foreach (ItemDataSO itemData in items)
         {
