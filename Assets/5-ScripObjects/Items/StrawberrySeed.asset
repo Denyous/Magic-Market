@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StrawberrySeed
   m_EditorClassIdentifier: Assembly-CSharp::SeedSO
   itemId: 3
-  itemName: StrawberrySeed
+  itemName: Strawberry Seed
   description: 
   icon: {fileID: 3706471016571915744, guid: f55f9c79ad0b58a43b0ae383c6490fec, type: 3}
   itemType: 2

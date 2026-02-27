@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25639fc775025e4db23c28b3109f9a7, type: 3}
   m_Name: PotatoSeed
   m_EditorClassIdentifier: Assembly-CSharp::SeedSO
-  itemId: 0
-  itemName: 
+  itemId: 4
+  itemName: Potato Seed
   description: 
-  icon: {fileID: 0}
-  itemType: 0
+  icon: {fileID: 4206968556728965966, guid: f55f9c79ad0b58a43b0ae383c6490fec, type: 3}
+  itemType: 2
   stackable: 0
   maxStack: 1
-  sellValue: 10
+  sellValue: 40
   cropId: 
   growthDuration: 60
   yieldItem: {fileID: 0}

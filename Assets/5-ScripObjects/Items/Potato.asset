@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f434ec1bd2a8ee409e49121b7ce58b2, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableSO
-  itemId: 0
-  itemName: 
+  itemId: 2
+  itemName: Potato
   description: 
-  icon: {fileID: 0}
-  itemType: 0
+  icon: {fileID: -4121517270082971212, guid: f55f9c79ad0b58a43b0ae383c6490fec, type: 3}
+  itemType: 1
   stackable: 0
   maxStack: 1
+  sellValue: 120
   energyRestoreAmount: 20
   buffData:
     hasBuffEffect: 0
