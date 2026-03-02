@@ -6,7 +6,7 @@ public class MoneyManager : MonoBehaviour
     public static MoneyManager Instance { get; private set; }
 
     public TextMeshProUGUI _moneyText;
-    public float Money { get; private set; } = 300f;
+    public float Money { get; private set; } = 500f;
     void Start()
     {
         if (Instance == null)
