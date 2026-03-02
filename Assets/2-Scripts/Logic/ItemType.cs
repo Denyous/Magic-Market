@@ -13,5 +13,6 @@ public enum ToolType
     Hoe,
     Axe,
     WateringCan,
-    Pickaxe
+    Pickaxe,
+    Sword
 }
