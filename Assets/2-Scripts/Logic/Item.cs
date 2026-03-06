@@ -1,6 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour,ITimeListener
 {
     [SerializeField] public ItemDataSO _itemData;
     
@@ -13,8 +13,18 @@ public class Item : MonoBehaviour
     public void InitializeItem(ItemDataSO itemData)
     {
         _itemData = itemData;
-        gameObject.GetComponent<SpriteRenderer>().sprite = _itemData.Icon;
+        
     }
 
+    public void OnTimeOfDayChanged(DayNightCycle.TimeOfDay newTime)
+    {
+        Debug.Log($"[Item] {name} zaman dilimi değişti: {newTime}");
+        // Zaman dilimine göre item görünümünü değiştirmek isterseniz, burada yapabilirsiniz.
+        // Örneğin, gece olduğunda item'in rengini biraz karartabilirsiniz:
+    }
 
+    public void OnDayCompleted(int dayNumber)
+    {
+        Debug.Log(" Item Day Completed ");
+    }
 }

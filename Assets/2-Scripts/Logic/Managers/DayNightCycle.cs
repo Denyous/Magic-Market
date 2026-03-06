@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class DayNightCycle : MonoBehaviour
-{   
-   public enum TimeOfDay
+{
+    public enum TimeOfDay
     {
         Sabah,   // 06:00 - 12:00
-        Ogles,   // 12:00 - 18:00
+        Ogle,   // 12:00 - 18:00
         Aksam,   // 18:00 - 22:00
         Gece     // 22:00 - 06:00
     }
@@ -26,11 +26,11 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private TimeGradient[] _timeGradients;
 
-    [SerializeField]private float _currentTimeInSeconds = 0f;
+    private float _currentTimeInSeconds = 0f;
     private TimeOfDay _currentTimeOfDay;
     private int _totalDaysElapsed = 0;
 
-    // Event sistemi
+
     public delegate void TimeOfDayChangedEvent(TimeOfDay newTime);
     public static event TimeOfDayChangedEvent OnTimeOfDayChanged;
 
@@ -39,6 +39,9 @@ public class DayNightCycle : MonoBehaviour
 
     public delegate void TimeTickEvent(float currentHour);
     public static event TimeTickEvent OnTimeTick;
+
+
+    private List<ITimeListener> timeListeners = new List<ITimeListener>();
 
     private void Start()
     {
@@ -54,6 +57,7 @@ public class DayNightCycle : MonoBehaviour
         }
 
         _currentTimeOfDay = TimeOfDay.Sabah;
+         FindAllTimeListeners();
 
     }
 
@@ -61,13 +65,14 @@ public class DayNightCycle : MonoBehaviour
     {
         _currentTimeInSeconds += Time.deltaTime;
 
-        // Gün tamamlandığında yeni güne geçip event tetikliyor
+        // Gün tamamlandığında bu bloğa girecek ve günün sayısını artıracak.
 
         if (_currentTimeInSeconds >= _dayDurationInSeconds)
         {
             _currentTimeInSeconds -= _dayDurationInSeconds;
             _totalDaysElapsed++;
             OnDayCompleted?.Invoke(_totalDaysElapsed);
+            NotifyListeners(_totalDaysElapsed);
 
             Debug.Log($"Gün tamamlandı! Toplam gün sayısı: {_totalDaysElapsed}");
         }
@@ -76,12 +81,14 @@ public class DayNightCycle : MonoBehaviour
 
         TimeOfDay newTimeOfDay = GetTimeOfDay(currentHour);
 
-        //Günün dönümü değiştiğinde event tetikliyor
+        //Günün dilimi değiştiğinde bu bloğa girecek.
 
         if (newTimeOfDay != _currentTimeOfDay)
         {
             _currentTimeOfDay = newTimeOfDay;
             OnTimeOfDayChanged?.Invoke(_currentTimeOfDay);
+            NotifyListeners(_currentTimeOfDay);
+
             Debug.Log($"Zaman dilimi değişti: {_currentTimeOfDay}");
 
         }
@@ -96,7 +103,7 @@ public class DayNightCycle : MonoBehaviour
         if (hour >= 6f && hour < 12f)
             return TimeOfDay.Sabah;
         else if (hour >= 12f && hour < 18f)
-            return TimeOfDay.Ogles;
+            return TimeOfDay.Ogle;
         else if (hour >= 18f && hour < 22f)
             return TimeOfDay.Aksam;
         else
@@ -119,7 +126,7 @@ public class DayNightCycle : MonoBehaviour
                 timeRangeStart = 6f;
                 timeRangeEnd = 12f;
                 break;
-            case TimeOfDay.Ogles:
+            case TimeOfDay.Ogle:
                 timeRangeStart = 12f;
                 timeRangeEnd = 18f;
                 break;
@@ -192,7 +199,7 @@ public class DayNightCycle : MonoBehaviour
         _timeGradients[0].skyGradient = new Gradient();
 
         _timeGradients[1] = new TimeGradient();
-        _timeGradients[1].timeOfDay = TimeOfDay.Ogles;
+        _timeGradients[1].timeOfDay = TimeOfDay.Ogle;
         _timeGradients[1].skyGradient = new Gradient();
 
         _timeGradients[2] = new TimeGradient();
@@ -202,6 +209,56 @@ public class DayNightCycle : MonoBehaviour
         _timeGradients[3] = new TimeGradient();
         _timeGradients[3].timeOfDay = TimeOfDay.Gece;
         _timeGradients[3].skyGradient = new Gradient();
+    }
+
+
+    // =================
+    // LISTENERLAR
+    // =================
+
+    private void FindAllTimeListeners()
+    {
+        MonoBehaviour[] allMonoBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None);
+
+        foreach (var mono in allMonoBehaviours)
+        {
+            if (mono is ITimeListener listener)
+            {
+                RegisterListener(listener);
+            }
+        }
+    }
+
+    //Zaman dilimi değiştiğinde
+    private void NotifyListeners(TimeOfDay newTime)
+    {
+        foreach (var listener in timeListeners)
+        {
+            listener.OnTimeOfDayChanged(newTime);
+        }
+
+    }
+    //Gün tamamlandığında
+    private void NotifyListeners(int newDay)
+    {
+        foreach (var listener in timeListeners)
+        {
+            listener.OnDayCompleted(newDay);
+        }
+    }
+
+
+    public void RegisterListener(ITimeListener listener)
+    {
+        if (!timeListeners.Contains(listener))
+        {
+            timeListeners.Add(listener);
+        }
+    }
+
+    public void UnregisterListener(ITimeListener listener)
+    {
+        timeListeners.Remove(listener);
     }
 
     // ============================================
