@@ -3,7 +3,14 @@
 public class Item : MonoBehaviour,ITimeListener
 {
     [SerializeField] public ItemDataSO _itemData;
-    
+
+
+    private void OnEnable()
+    {
+        DayNightCycle.OnDayCompleted += OnDayCompleted;
+        DayNightCycle.OnTimeOfDayChanged += OnDayTimeChanged;
+    }
+
     void Start()
     {
         InitializeItem(_itemData);
@@ -16,15 +23,23 @@ public class Item : MonoBehaviour,ITimeListener
         
     }
 
-    public void OnTimeOfDayChanged(DayNightCycle.TimeOfDay newTime)
+    void ITimeListener.OnTimeOfDayChanged(TimeOfDay newTime)
     {
-        Debug.Log($"[Item] {name} zaman dilimi değişti: {newTime}");
-        // Zaman dilimine göre item görünümünü değiştirmek isterseniz, burada yapabilirsiniz.
-        // Örneğin, gece olduğunda item'in rengini biraz karartabilirsiniz:
+        Debug.Log($"Interface, Item: {name} - Zaman dilimi değişti: {newTime}");
     }
 
-    public void OnDayCompleted(int dayNumber)
+    void ITimeListener.OnDayCompleted(int dayNumber)
     {
-        Debug.Log(" Item Day Completed ");
+        Debug.Log($"Interface, Item: {name} - Gün değişti: {dayNumber}");
+    }
+
+    void OnDayCompleted(int dayNumber)
+    {
+        Debug.Log($",Evet, Item: {name} - Gün değişti: {dayNumber}");
+    }
+
+    void OnDayTimeChanged(TimeOfDay timeOfDay)
+    {
+        Debug.Log($"Evet, Item: {name} - Zaman dilimi değişti: {timeOfDay}"); 
     }
 }

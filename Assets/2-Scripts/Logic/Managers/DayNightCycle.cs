@@ -2,24 +2,21 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+
+
+[System.Serializable]
+public class TimeGradient
+{
+    public TimeOfDay timeOfDay;
+    public Gradient skyGradient;
+}
+
 public class DayNightCycle : MonoBehaviour
 {
-    public enum TimeOfDay
-    {
-        Sabah,   // 06:00 - 12:00
-        Ogle,   // 12:00 - 18:00
-        Aksam,   // 18:00 - 22:00
-        Gece     // 22:00 - 06:00
-    }
-
-    [System.Serializable]
-    public class TimeGradient
-    {
-        public TimeOfDay timeOfDay;
-        public Gradient skyGradient;
-    }
+    
 
     [Header("Day-Night Settings ")]
+    public static DayNightCycle Instance { get; private set; }
 
     [SerializeField] private float _dayDurationInSeconds = 480f;
     [SerializeField] private Light2D _sunLight;
@@ -43,6 +40,18 @@ public class DayNightCycle : MonoBehaviour
 
     private List<ITimeListener> timeListeners = new List<ITimeListener>();
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         if (_sunLight == null)
@@ -300,4 +309,12 @@ public class DayNightCycle : MonoBehaviour
         float currentHour = GetCurrentHourAsFloat();
         return currentHour >= startHour && currentHour < endHour;
     }
+}
+
+public enum TimeOfDay
+{
+    Sabah,   // 06:00 - 12:00
+    Ogle,   // 12:00 - 18:00
+    Aksam,   // 18:00 - 22:00
+    Gece     // 22:00 - 06:00
 }
