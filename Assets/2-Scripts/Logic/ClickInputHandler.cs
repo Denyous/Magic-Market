@@ -14,7 +14,7 @@ public class ClickInputHandler : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("Left mouse button pressed!");
+        
         if (!callbackContext.started) return;
 
         var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));

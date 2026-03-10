@@ -46,6 +46,7 @@ public class DayNightCycle : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            _currentTimeOfDay = TimeOfDay.Sabah;
         }
         else
         {
@@ -65,7 +66,7 @@ public class DayNightCycle : MonoBehaviour
             InitializeDefaultGradients();
         }
 
-        _currentTimeOfDay = TimeOfDay.Sabah;
+        
          FindAllTimeListeners();
 
     }

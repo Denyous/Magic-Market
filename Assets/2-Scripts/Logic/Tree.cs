@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class Tree : MonoBehaviour,IBreakable
 {
-
-    [SerializeField] private int _treeHealth = 3;
+    [Header("Tree Settings")]
     [SerializeField] private GameObject _woodPrefab;
+    public int _health { get; set; } = 3;
 
     private void OnEnable()
     {
@@ -26,24 +26,27 @@ public class Tree : MonoBehaviour
 
     public void TakeDamage(Collider2D collision)
     {
-       
-                   
-            if (_treeHealth != 0)
+
+        if (collision.gameObject.tag == "Tree")
+        {
+
+            if (_health != 0)
             {
-                Debug.Log("Tree hit!");
-                this._treeHealth--;
+               
+                this._health--;
             }
             else
             {
-               
+
                 Destroy(collision.gameObject);
 
                 for (int i = 0; i <= 3; i++)
                 {
-                    Instantiate(_woodPrefab,gameObject.transform.parent);
+                    Instantiate(_woodPrefab, gameObject.transform.parent);
                 }
             }
-        
+        }
+
     }
 
 }

@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42925262cd939e34c914e94fb6c938fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tree
-  _treeHealth: 3
   _woodPrefab: {fileID: 5764279425768606710, guid: 03d5e94c280a7ca419c32e92e8869cee, type: 3}
 --- !u!212 &1711229121409931429
 SpriteRenderer:
@@ -141,7 +140,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.07074958, y: -0.99272406}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -151,5 +150,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.125, y: 3}
+  m_Size: {x: 1.1344932, y: 1.0145519}
   m_EdgeRadius: 0
