@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: 14
   itemName: Stone
   description: 
-  icon: {fileID: -3734987226122482829, guid: bb18b825435fe9048878bf2807d563d9, type: 3}
+  icon: {fileID: 21300000, guid: f155ff6ce344bb448a6ca6814e3b010d, type: 3}
   itemType: 3
   stackable: 0
   maxStack: 1

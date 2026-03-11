@@ -19,11 +19,11 @@ public abstract class Resources : MonoBehaviour,ITimeListener
 
     public void OnTimeOfDayChanged(TimeOfDay newTime)
     {
-        SpawnSourceResource();
+       
     }
     public void OnDayCompleted(int dayNumber)
     {
-      
+      SpawnSourceResource();
     }
 
     private void SpawnSourceResource()
