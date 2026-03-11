@@ -1,52 +1,50 @@
 ﻿using UnityEngine;
 
-public class Tree : MonoBehaviour,IBreakable
+public class Tree : Resources,IBreakable
 {
     [Header("Tree Settings")]
-    [SerializeField] private GameObject _woodPrefab;
+    
     public int _health { get; set; } = 3;
-
-    private void OnEnable()
-    {
-        ClickInputHandler.OnLeftMousePressed += TakeDamage;
-    }
-
-    private void OnDisable()
-    {
-        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
-    }
 
     private void Awake()
     {
-        if (_woodPrefab == null)
-        {
-            Debug.Log("Wood Prefab referans atanmamış");
-        }
+        _health = 2;
     }
 
     public void TakeDamage(Collider2D collision)
     {
 
-        if (collision.gameObject.tag == "Tree")
+        if (collision.gameObject != gameObject) return;
+
+        _health--;
+
+        if (_health <= 0)
         {
-
-            if (_health != 0)
-            {
-               
-                this._health--;
-            }
-            else
-            {
-
-                Destroy(collision.gameObject);
-
-                for (int i = 0; i <= 3; i++)
-                {
-                    Instantiate(_woodPrefab, gameObject.transform.parent);
-                }
-            }
+            Debug.Log(gameObject.name);
+            DestroyObject();
+            SpawnResource();
         }
 
     }
+    override protected void SpawnResource()
+    {
+        base.SpawnResource();
+        Debug.Log("Wood spawned");
+    }
 
+    override protected void DestroyObject()
+    {
+        base.DestroyObject();
+        Debug.Log("Tree destroyed");
+    }
+
+
+    private void OnEnable()
+    {
+        ClickInputHandler.OnLeftMousePressed += TakeDamage;
+    }
+    private void OnDisable()
+    {
+        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
+    }
 }

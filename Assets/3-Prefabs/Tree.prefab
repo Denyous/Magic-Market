@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42925262cd939e34c914e94fb6c938fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tree
-  _woodPrefab: {fileID: 5764279425768606710, guid: 03d5e94c280a7ca419c32e92e8869cee, type: 3}
+  _resourcePrefab: {fileID: 5764279425768606710, guid: 03d5e94c280a7ca419c32e92e8869cee, type: 3}
 --- !u!212 &1711229121409931429
 SpriteRenderer:
   serializedVersion: 2

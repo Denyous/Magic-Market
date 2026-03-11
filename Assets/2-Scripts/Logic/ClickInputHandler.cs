@@ -20,7 +20,7 @@ public class ClickInputHandler : MonoBehaviour
         var rayHit = Physics2D.GetRayIntersection(_mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
         if (!rayHit.collider) return;
 
-        Debug.Log("Hit: " + rayHit.collider.name);
+        Debug.Log("Object Hit : " + rayHit.collider.gameObject.name);
         OnLeftMousePressed?.Invoke(rayHit.collider);
     }
 
