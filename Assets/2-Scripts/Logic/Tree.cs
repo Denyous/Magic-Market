@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Tree : Resources,IBreakable
+public class Tree : Resources, IBreakable, IClickable
 {
     [Header("Tree Settings")]
     
@@ -38,6 +38,10 @@ public class Tree : Resources,IBreakable
         Debug.Log("Tree destroyed");
     }
 
+    public void OnClicked(int count)
+    {
+        
+    }
 
     private void OnEnable()
     {
@@ -47,4 +51,6 @@ public class Tree : Resources,IBreakable
     {
         ClickInputHandler.OnLeftMousePressed -= TakeDamage;
     }
+
+  
 }

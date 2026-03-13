@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Rock : Resources, IBreakable
+public class Rock : Resources, IBreakable,IClickable
 {
     public int _health { get; set; }
 
@@ -44,6 +44,8 @@ public class Rock : Resources, IBreakable
         ClickInputHandler.OnLeftMousePressed -= TakeDamage;
     }
 
-
-
+    public void OnClicked(int count)
+    {
+       
+    }
 }

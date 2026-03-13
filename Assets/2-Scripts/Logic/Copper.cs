@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Copper : Resources, IBreakable
+public class Copper : Resources, IBreakable, IClickable
 {
     public int _health { get; set; }
     private void Awake()
@@ -43,5 +43,9 @@ public class Copper : Resources, IBreakable
     private void OnDisable()
     {
         ClickInputHandler.OnLeftMousePressed -= TakeDamage;
+    }
+
+    public void OnClicked(int count)
+    {
     }
 }
