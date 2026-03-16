@@ -1,12 +1,25 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class Rock : Resources, IBreakable,IClickable
+public class Gold : Resources, IClickable,IBreakable
 {
-    public int _health { get; set; }
+    public int _health { get ; set ; }
+
+    private void OnEnable()
+    {
+        ClickInputHandler.OnLeftMousePressed += TakeDamage;
+    }
+    private void OnDisable()
+    {
+        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
+    }
 
     private void Awake()
     {
-        _health = 2;
+        _health = 4;
+    }
+    public void OnClicked(int count)
+    {
+       
     }
 
     public void TakeDamage(Collider2D collision)
@@ -26,26 +39,13 @@ public class Rock : Resources, IBreakable,IClickable
     override protected void SpawnResource()
     {
         base.SpawnResource();
-        Debug.Log("Stone spawned");
+        Debug.Log("Gold spawned");
     }
+
 
     override protected void DestroyObject()
     {
         base.DestroyObject();
-        Debug.Log("Rock destroyed");
-    }
-
-    private void OnEnable()
-    {
-        ClickInputHandler.OnLeftMousePressed += TakeDamage;
-    }
-    private void OnDisable()
-    {
-        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
-    }
-
-    public void OnClicked(int count)
-    {
-       
+        Debug.Log("Gold destroyed");
     }
 }

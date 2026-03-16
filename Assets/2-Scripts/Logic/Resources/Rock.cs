@@ -1,8 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Copper : Resources, IBreakable, IClickable
+public class Rock : Resources, IBreakable,IClickable
 {
     public int _health { get; set; }
+
+
+    private void OnEnable()
+    {
+        ClickInputHandler.OnLeftMousePressed += TakeDamage;
+    }
+    private void OnDisable()
+    {
+        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
+    }
+
     private void Awake()
     {
         _health = 2;
@@ -10,7 +21,6 @@ public class Copper : Resources, IBreakable, IClickable
 
     public void TakeDamage(Collider2D collision)
     {
-        Debug.Log("Copper took damage");
         if (collision.gameObject != gameObject) return;
 
         _health--;
@@ -26,26 +36,19 @@ public class Copper : Resources, IBreakable, IClickable
     override protected void SpawnResource()
     {
         base.SpawnResource();
-        Debug.Log("Copper spawned");
+        Debug.Log("Stone spawned");
     }
 
     override protected void DestroyObject()
     {
         base.DestroyObject();
-        Debug.Log("Copper destroyed");
+        Debug.Log("Rock destroyed");
     }
 
-
-    private void OnEnable()
-    {
-        ClickInputHandler.OnLeftMousePressed += TakeDamage;
-    }
-    private void OnDisable()
-    {
-        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
-    }
+  
 
     public void OnClicked(int count)
     {
+       
     }
 }

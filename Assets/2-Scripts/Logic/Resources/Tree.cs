@@ -6,6 +6,16 @@ public class Tree : Resources, IBreakable, IClickable
     
     public int _health { get; set; } = 3;
 
+    private void OnEnable()
+    {
+        ClickInputHandler.OnLeftMousePressed += TakeDamage;
+    }
+    private void OnDisable()
+    {
+        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
+    }
+
+
     private void Awake()
     {
         _health = 2;
@@ -43,14 +53,7 @@ public class Tree : Resources, IBreakable, IClickable
         
     }
 
-    private void OnEnable()
-    {
-        ClickInputHandler.OnLeftMousePressed += TakeDamage;
-    }
-    private void OnDisable()
-    {
-        ClickInputHandler.OnLeftMousePressed -= TakeDamage;
-    }
+   
 
   
 }
