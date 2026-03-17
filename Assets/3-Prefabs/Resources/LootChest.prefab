@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 496275288699922953}
   - component: {fileID: 1224680399253773315}
   - component: {fileID: 4532724926968946617}
+  - component: {fileID: 7406996544072381965}
   - component: {fileID: 2815299133077349568}
   m_Layer: 0
-  m_Name: Chest
+  m_Name: LootChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +106,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a542599c5637b54aa5e7cdc0fc509e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chest
+  items:
+  - {fileID: 5764279425768606710, guid: beb47b3b4701d0846855785d5a26e2a0, type: 3}
+  - {fileID: 5764279425768606710, guid: 9a17030d3fd392746a62ee4543be0146, type: 3}
+  - {fileID: 5764279425768606710, guid: 3f86c3b6f53a84e468063893d6fe970e, type: 3}
+  - {fileID: 5764279425768606710, guid: 03d5e94c280a7ca419c32e92e8869cee, type: 3}
+  - {fileID: 8228406740003798737, guid: 2e1ca737cae2c1b4297136512ae4ceb5, type: 3}
+  - {fileID: 98476055660577146, guid: e2775f10df37863449e3de594f079ff1, type: 3}
+  - {fileID: 5145412305726918857, guid: a815e33afbd5c5c4e9aed8c6dd477dbf, type: 3}
+--- !u!114 &7406996544072381965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106873916660496270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751530cfe1d8f6a42b1678acaa1b7114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChestUI
+  chestOpenedSprite: {fileID: 5045073161074915229, guid: b5be030c603da9f43bcfb08ac7531f70, type: 3}
+  chestClosedSprite: {fileID: -6834524911116659543, guid: b5be030c603da9f43bcfb08ac7531f70, type: 3}
 --- !u!61 &2815299133077349568
 BoxCollider2D:
   m_ObjectHideFlags: 0
