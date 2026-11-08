@@ -43,14 +43,6 @@ The project includes several gameplay systems and software architecture concepts
 - Unity Physics & Trigger System
 - Git & GitHub
 
-##  Screenshots
-
-Gameplay screenshots will be added here.
-
-## Gameplay Video
-
-Gameplay footage will be added here.
-
 ## Development Status
 
 Magic Market is an ongoing game development project. Gameplay mechanics, systems, and features are being developed and improved.
