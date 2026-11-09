@@ -42,9 +42,6 @@ The project includes several gameplay systems and software architecture concepts
 - Unity ScriptableObjects
 - Unity Physics & Trigger System
 - Git & GitHub
- ## Gameplay Video
-
-[Watch Gameplay](Gameplay/1-Controller.mp4)
 
 ## Development Status
 
