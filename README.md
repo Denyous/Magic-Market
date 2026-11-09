@@ -47,6 +47,9 @@ The project includes several gameplay systems and software architecture concepts
 
 Magic Market is an ongoing game development project. Gameplay mechanics, systems, and features are being developed and improved.
 
+## Screenshots and Gameplay
+
+You can find photos and gameplay videos in the Screenshots and Gameplay files.
 ---
 
 **Developed with Unity and C#**
